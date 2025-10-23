@@ -3,7 +3,7 @@
 #include <memory>
 
 namespace miit::algebra{
-    void OurEx2::Task2(){
+    void OurEx2::Task(){
         if (matrix->get_size() == 0) return;
 
         auto temp = std::make_unique<int[]>(matrix->get_size());

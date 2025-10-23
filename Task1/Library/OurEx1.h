@@ -14,6 +14,6 @@ namespace miit::algebra
         /**
          * @brief Task1 - replacing of minimal by modul element 
          */
-        void Task1() override;
+        void Task() override;
         };
 }

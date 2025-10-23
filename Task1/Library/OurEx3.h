@@ -11,6 +11,6 @@ namespace miit::algebra
              * @param D array
              * @return new array A
              */
-            Matrix<int> Task3(const Matrix<int>& D) override;
+            void Task() override;
     };
 }

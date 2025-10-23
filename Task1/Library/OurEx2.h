@@ -14,7 +14,7 @@ namespace miit::algebra
             /**
              * @brief Task2 - delete elements with even first and last digit
              */
-            void Task2() override;
+            void Task() override;
 
         private:
             /**

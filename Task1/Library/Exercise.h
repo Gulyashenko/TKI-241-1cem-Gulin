@@ -39,20 +39,8 @@ namespace miit::algebra
         const Matrix<int>& get_matrix() const;
         
         /**
-         * @brief Task1 - replace minimal by modul element
+         * @brief Task 
          */
-        virtual void Task1() = 0;
-        
-        /**
-         * @brief Task2 - delite elements with even first and last digit
-         */
-        virtual void Task2() = 0;
-        
-        /**
-         * @brief Задание 3 - creating new array by rule
-         * @param D array
-         * @return new array A
-         */
-        virtual Matrix<int> Task3(const Matrix<int>& D) = 0;
+        virtual void Task() = 0;
     };
 }

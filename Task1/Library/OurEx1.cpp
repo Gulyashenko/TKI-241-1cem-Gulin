@@ -4,7 +4,7 @@
 
 namespace miit::algebra
 {
-    void OurEx1::Task1()
+    void OurEx1::Task()
     {
         if (matrix->get_size() == 0) return;
         
