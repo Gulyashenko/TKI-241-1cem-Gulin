@@ -6,7 +6,7 @@ namespace miit::algebra
     /**
      * @brief concrete realisition of tasks
      */
-    class OurEx : public Exercise
+    class OurEx1 : public Exercise
     {
     public:
         using Exercise::Exercise;
@@ -19,14 +19,14 @@ namespace miit::algebra
         /**
          * @brief Task2- delete elements with even first and last digit
          */
-        void Task2() override;
+//        void Task2() override;
         
         /**
          * @brief Task3 - creating new array by rule
          * @param D array
          * @return new array A
          */
-        Matrix<int> Task3(const Matrix<int>& D) override;
+//        Matrix<int> Task3(const Matrix<int>& D) override;
         
     private:
         /**
