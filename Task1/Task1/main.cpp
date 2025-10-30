@@ -77,30 +77,53 @@ namespace miit::algebra
             
             std::unique_ptr<Generator> generator;
             switch (fill_method){
-              case FillMethod::RANDOM: generator = std::make_unique<RandomGenerator>(-10, 10); break;
-              case FillMethod::CONSTANT: generator = std::make_unique<ConstantGenerator>(0); break;
+              case FillMethod::RANDOM:
+                int min, max;
+                std::cout << "Input min value";
+                std::cin >> min;
+                std::cout << "Input max value";
+                std::cin >> max;
+                if (min > max)
+                {
+                    std::cout << "Input error" << std::endl;
+                    throw;
+                }
+                generator = std::make_unique<RandomGenerator>(min, max); break;
+              case FillMethod::CONSTANT: 
+                int value;
+                std::cout << "Input value";
+                std::cin >> value;
+                generator = std::make_unique<ConstantGenerator>(value); break;
               case FillMethod::FROM_INPUT: generator = std::make_unique<IStreamGenerator>(std::cin); break;
               default: return 1;
             }
 
-            Exercise exercise(size, std::move(generator));
+            std::unique_ptr<Exercise> exercise;
             switch (task){
-              case TaskChoice::TASK1: exercise.Task1(); break;
-              case TaskChoice::TASK2: exercise.Task2(); break;
-              case TaskChoice::TASK3: exercise.Task3(); break;
-              default: return 1;
+                case TaskChoice::TASK1: 
+                    exercise = std::make_unique<OurEx1>(size, std::move(generator)); 
+                    break;
+                case TaskChoice::TASK2: 
+                    exercise = std::make_unique<OurEx2>(size, std::move(generator)); 
+                    break;
+                case TaskChoice::TASK3: 
+                    exercise = std::make_unique<OurEx3>(size, std::move(generator)); 
+                    break;
             }
 
-            std::cout << exercise.get_matrix().to_string() << std::endl;
-
-
+            exercise->fill_matrix();
+            std::cout << "Original array: " << exercise->get_matrix().to_string() << std::endl;
             
-        return 0;
+            exercise->Task();
+            
+            std::cout << "Result array: " << exercise->get_matrix().to_string() << std::endl;
+
+            return 0;
     }
 
     size_t Input_size(void) {
         int size = Input("Input array size");
-        if (Input <= 0)
+        if (size <= 0)
         {
             std::cout << "Input error" << std::endl;
             throw;
