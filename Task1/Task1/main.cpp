@@ -31,45 +31,18 @@ namespace miit::algebra
         TASK2,
         TASK3
     };
-
+    
     /**
-     * @brief Function to create generator based on fill method
+     * @brief Input size of array
+     * @return size of array
      */
-    std::unique_ptr<Generator> create_generator(FillMethod method)
-    {
-        switch (method)
-        {
-        case FillMethod::RANDOM:
-            return std::make_unique<RandomGenerator>(-100, 100);
-        case FillMethod::CONSTANT:
-            return std::make_unique<ConstantGenerator>(5.0);
-        case FillMethod::FROM_INPUT:
-            return std::make_unique<IStreamGenerator>(std::cin);
-        default:
-            std::cout << "Inwalid chooise of fill method" << std::endl;
-            
-        }
-    }
-
-    /**
-     * @brief Function to create exercise based on task choice
-     */
-    std::unique_ptr<Exercise> create_exercise(TaskChoice task, size_t size, std::unique_ptr<Generator> generator)
-    {
-        switch (task)
-        {
-        case TaskChoice::TASK1:
-            return std::make_unique<OurEx1>(size, std::move(generator));
-        case TaskChoice::TASK2:
-            return std::make_unique<OurEx2>(size, std::move(generator));
-        case TaskChoice::TASK3:
-            return std::make_unique<OurEx3>(size, std::move(generator));
-        default:
-            std::cout << "Inwalid chooise of task" << std::endl;
-        }
-    }
-
     size_t Input_size(void);
+
+    /**
+     * @brief input value
+     * @param message message
+     * @return value
+     */
     double Input(const char* message);
 
     int main(void)
@@ -77,47 +50,51 @@ namespace miit::algebra
         using namespace miit::algebra;
 
             size_t size = Input_size();
-
-            if (size == 0)
-            {
-                std::cout << "Array size must be greater than 0" << std::endl;
-                return 1;
-            }
-
             int fill_choice;
-            std::cout << "Choose fill method (1-3): ";
+            std::cout << "Choose fill method:" << RANDOM << " - random," << CONSTANT
+              << " - constant," << FROM_INPUT << " - from input";
             std::cin >> fill_choice;
 
             FillMethod fill_method;
-
-
-            int task_choice;
-            std::cout << "Choose task (1-3): ";
-            std::cin >> task_choice;
-
-            TaskChoice task;
-          
-
-            auto generator = create_generator(fill_method);
-            auto exercise = create_exercise(task, size, std::move(generator));
-
-            // Fill matrix
-            if (fill_method == FillMethod::FROM_INPUT)
-            {
-                std::cout << "Enter " << size << " integer values:" << std::endl;
+            switch (fill_choice){
+              case 1: FillMethod = FillMethod::RANDOM; break;
+              case 2: FillMethod = FillMethod::CONSTANT; break;
+              case 3: FillMethod = FillMethod::FROM_INPUT; break;
+              default: return 1;
             }
 
-            exercise->fill_matrix();
+            int task_choice;
+            std::cout << "Choose task" << TASK1 << " - task 1," << TASK2 << " - task 2," << TASK3 << " - task 3";
+            std::cin >> task_choice;
+            
+            TaskChoice task;
+            switch (task_choice){
+              case 1: TaskChoice = TaskChoice::TASK1; break;
+              case 2: TaskChoice = TaskChoice::TASK2; break;
+              case 3: TaskChoice = TaskChoice::TASK3; break;
+              default: return 1;
+            }
+            
+            std::unique_ptr<Generator> generator;
+            switch (fill_method){
+              case FillMethod::RANDOM: generator = std::make_unique<RandomGenerator>(-10, 10); break;
+              case FillMethod::CONSTANT: generator = std::make_unique<ConstantGenerator>(0); break;
+              case FillMethod::FROM_INPUT: generator = std::make_unique<IStreamGenerator>(std::cin); break;
+              default: return 1;
+            }
 
-            // Display original array
-            std::cout << "\nOriginal array: " << exercise->get_matrix().to_string() << std::endl;
+            Exercise exercise(size, std::move(generator));
+            switch (task){
+              case TaskChoice::TASK1: exercise.Task1(); break;
+              case TaskChoice::TASK2: exercise.Task2(); break;
+              case TaskChoice::TASK3: exercise.Task3(); break;
+              default: return 1;
+            }
 
-            // Execute task
-            exercise->Task();
+            std::cout << exercise.get_matrix().to_string() << std::endl;
 
-            // Display result
-            std::cout << "Result array: " << exercise->get_matrix().to_string() << std::endl;
 
+            
         return 0;
     }
 
@@ -127,6 +104,10 @@ namespace miit::algebra
         {
             std::cout << "Input error" << std::endl;
             throw;
+        }
+        if (size == 0){
+          std::cout << "Array size must be more than 0" << std::endl;
+          throw;
         }
         return (size_t)size;
     }
