@@ -114,24 +114,6 @@ namespace miit::algebra
     }
 
     template<typename T>
-    void Matrix<T>::fill_zeros()
-    {
-        for (size_t i = 0; i < size; ++i)
-        {
-            data[i] = T{};
-        }
-    }
-
-    template<typename T>
-    void Matrix<T>::fill_const(const T& value)
-    {
-        for (size_t i = 0; i < size; ++i)
-        {
-            data[i] = value;
-        }
-    }
-
-    template<typename T>
     std::string Matrix<T>::to_string() const
     {
         std::ostringstream oss;

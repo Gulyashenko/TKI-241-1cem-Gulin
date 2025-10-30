@@ -60,8 +60,6 @@ namespace miit::algebra
          * @brief filling array
          */
         void fill(Generator& generator);
-        void fill_zeros();
-        void fill_const(const T& value);
         
         /**
          * @brief converting to string
