@@ -1,14 +1,14 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include "Matrix.h"
-#include "Exercise.h"
-#include "OurEx1.h"
-#include "OurEx2.h"
-#include "OurEx3.h"
-#include "RandomGenerator.h"
-#include "ConstantGenerator.h"
-#include "IStreamGenerator.h"
+#include "../Library/Matrix.h"
+#include "../Library/Exercise.h"
+#include "../Library/OurEx1.h"
+#include "../Library/OurEx2.h"
+#include "../Library/OurEx3.h"
+#include "../Library/RandomGenerator.h"
+#include "../Library/ConstantGenerator.h"
+#include "../Library/IStreamGenerator.h"
 
 namespace miit::algebra
 {
