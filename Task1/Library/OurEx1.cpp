@@ -4,7 +4,11 @@
 
 namespace miit::algebra
 {
-    void OurEx1::Task()
+  OurEx1::OurEx1(size_t size, std::unique_ptr<Generator> gen) : Exercise(size, gen)
+    {
+    }
+
+  void OurEx1::Task()
     {
         if (matrix->get_size() == 0) return;
         

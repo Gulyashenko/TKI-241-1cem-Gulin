@@ -57,9 +57,9 @@ namespace miit::algebra
 
             FillMethod fill_method;
             switch (fill_choice){
-              case 1: FillMethod = FillMethod::RANDOM; break;
-              case 2: FillMethod = FillMethod::CONSTANT; break;
-              case 3: FillMethod = FillMethod::FROM_INPUT; break;
+              case RANDOM: FillMethod = FillMethod::RANDOM; break;
+              case CONSTANT: FillMethod = FillMethod::CONSTANT; break;
+              case FROM_INPUT: FillMethod = FillMethod::FROM_INPUT; break;
               default: return 1;
             }
 
@@ -69,9 +69,9 @@ namespace miit::algebra
             
             TaskChoice task;
             switch (task_choice){
-              case 1: TaskChoice = TaskChoice::TASK1; break;
-              case 2: TaskChoice = TaskChoice::TASK2; break;
-              case 3: TaskChoice = TaskChoice::TASK3; break;
+              case TASK1: TaskChoice = TaskChoice::TASK1; break;
+              case TASK2: TaskChoice = TaskChoice::TASK2; break;
+              case TASK3: TaskChoice = TaskChoice::TASK3; break;
               default: return 1;
             }
             
@@ -109,6 +109,7 @@ namespace miit::algebra
                 case TaskChoice::TASK3: 
                     exercise = std::make_unique<OurEx3>(size, std::move(generator)); 
                     break;
+                default: return 1;
             }
 
             exercise->fill_matrix();

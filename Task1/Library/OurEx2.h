@@ -10,7 +10,11 @@ namespace miit::algebra
     class OurEx2 : public Exercise{
         public:
             using Exercise::Exercise;
-
+            /**
+             * @brief constructor
+             */
+            OurEx2(size_t size, std::unique_ptr<Generator> gen);
+            
             /**
              * @brief Task2 - delete elements with even first and last digit
              */

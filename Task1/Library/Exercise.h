@@ -13,6 +13,10 @@ namespace miit::algebra
     protected:
         std::unique_ptr<Matrix<int>> matrix;
         std::unique_ptr<Generator> generator;
+        /**
+         * @brief function for fill array
+         */
+        void fill_matrix();
         
     public:
         /**
@@ -26,11 +30,6 @@ namespace miit::algebra
          * @brief virtual distructor
          */
         virtual ~Exercise() = default;
-        
-        /**
-         * @brief filling array
-         */
-        void fill_matrix();
         
         /**
          * @brief getting array

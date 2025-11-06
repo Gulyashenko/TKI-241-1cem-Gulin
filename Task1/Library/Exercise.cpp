@@ -6,6 +6,7 @@ namespace miit::algebra
         : matrix(std::make_unique<Matrix<int>>(size))
         , generator(std::move(gen))
     {
+      matrix->fill_matrix();
     }
 
     void Exercise::fill_matrix()

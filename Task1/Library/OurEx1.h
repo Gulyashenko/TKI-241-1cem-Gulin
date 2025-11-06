@@ -10,7 +10,12 @@ namespace miit::algebra
     {
     public:
         using Exercise::Exercise;
-        
+       
+        /**
+         * @brief generator
+         */
+        OurEx1(size_t size, std::unique_ptr<Generator> gen);
+
         /**
          * @brief Task1 - replacing of minimal by modul element 
          */

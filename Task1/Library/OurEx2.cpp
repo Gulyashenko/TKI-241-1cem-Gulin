@@ -3,6 +3,10 @@
 #include <memory>
 
 namespace miit::algebra{
+
+    OurEx2::OurEx2(size_t size, std::unique_ptr<Generator> gen) : Exercise(size, gen)
+    {
+    }
     void OurEx2::Task(){
         if (matrix->get_size() == 0) return;
 

@@ -2,11 +2,9 @@
 
 namespace miit::algebra
 {
-    /**
-     * @brief Task3 - creating new array by rule
-     * @param D array
-     * @return new array A
-     */
+    OurEx3::OurEx3(size_t size, std::unique_ptr<Generator> gen) : Exercise(size, gen)
+    {
+    }
     void OurEx3::Task() {
         size_t size = matrix->get_size();
         
