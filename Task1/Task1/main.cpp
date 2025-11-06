@@ -149,4 +149,4 @@ namespace miit::algebra
         }
         return input;
     }
-    
+}
