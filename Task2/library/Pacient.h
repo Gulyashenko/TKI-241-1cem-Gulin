@@ -1,20 +1,22 @@
-#include "Patient.h"
+#include "Person.h"
 #include <iostream>
 
-Patient::Patient(const std::string& name, int age, int patientId, int roomNumber, int doctorId)
-    : Person(name, age), patientId(patientId), roomNumber(roomNumber), doctorId(doctorId) {}
-
-void Patient::printInfo() const {
-    Person::printInfo();
-    std::cout << ", Patient ID: " << patientId 
-              << ", Room: " << roomNumber 
-              << ", Doctor ID: " << doctorId << std::endl;
-}
-
-int Patient::getDoctorId() const {
-    return doctorId;
-}
-
-int Patient::getRoomNumber() const {
-    return roomNumber;
-}
+class Patient : public Person {
+private:
+    int patientId;
+    static int nextId;  // Статическая переменная для генерации ID
+    
+public:
+    Patient();
+    Patient(const std::string& name, int age);
+    
+    // Переопределение виртуальных методов
+    void printInfo() const override;
+    void readFromInput() override;
+    
+    int getId() const;
+    
+    // Операторы ввода/вывода (скрывают родительские)
+    friend std::ostream& operator<<(std::ostream& os, const Patient& patient);
+    friend std::istream& operator>>(std::istream& is, Patient& patient);
+};
