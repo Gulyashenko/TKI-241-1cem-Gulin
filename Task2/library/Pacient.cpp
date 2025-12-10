@@ -3,23 +3,29 @@
 // Инициализация статической переменной
 int Patient::nextId = 1000;
 
-Patient::Patient() : Person(), patientId(nextId++) {}
+Patient::Patient() : Person(), patientId(nextId++), roomNumber(0) {}
 
-Patient::Patient(const std::string& name, int age) 
-    : Person(name, age), patientId(nextId++) {}
+Patient::Patient(const std::string& name, int age, int roomNumber) 
+    : Person(name, age), patientId(nextId++), roomNumber(roomNumber) {}
 
 void Patient::printInfo() const {
-    std::cout << "Patient [ID: " << patientId << "] ";
+    std::cout << "Patient [ID: " << patientId << " << Room: " << roomNumber << "] ";
     Person::printInfo();
 }
 
 void Patient::readFromInput() {
     Person::readFromInput();
-    // ID генерируется автоматически
+    std::cout << "Enter room number: ";
+    std::cin >> roomNumber;
+    std::cin.ignore();
 }
 
 int Patient::getId() const {
     return patientId;
+}
+
+int Patient::getRoomNumber() const {
+    return roomNumber;
 }
 
 std::ostream& operator<<(std::ostream& os, const Patient& patient) {

@@ -4,19 +4,19 @@
 class Patient : public Person {
 private:
     int patientId;
-    static int nextId;  // Статическая переменная для генерации ID
+    static int nextId;
+    int roomNumber;
     
 public:
     Patient();
-    Patient(const std::string& name, int age);
+    Patient(const std::string& name, int age, int roomNumber);
     
-    // Переопределение виртуальных методов
     void printInfo() const override;
     void readFromInput() override;
     
     int getId() const;
-    
-    // Операторы ввода/вывода (скрывают родительские)
+    int getRoomNumber() const;
+
     friend std::ostream& operator<<(std::ostream& os, const Patient& patient);
     friend std::istream& operator>>(std::istream& is, Patient& patient);
 };
