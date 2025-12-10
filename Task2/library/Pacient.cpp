@@ -5,7 +5,7 @@ int Patient::nextId = 1000;
 
 Patient::Patient() : Person(), patientId(nextId++), roomNumber(0) {}
 
-Patient::Patient(const std::string& name, int age, int roomNumber) 
+Patient::Patient(const std::string& name, const int age,const int roomNumber) 
     : Person(name, age), patientId(nextId++), roomNumber(roomNumber) {}
 
 void Patient::printInfo() const {

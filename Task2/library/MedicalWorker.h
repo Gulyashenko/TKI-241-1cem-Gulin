@@ -14,7 +14,7 @@ private:
     
 public:
     MedicalWorker();
-    MedicalWorker(const std::string& name, int age, const std::string& specialization);
+    MedicalWorker(const std::string& name, const int age, const std::string& specialization);
     ~MedicalWorker() = default;
     
     MedicalWorker(const MedicalWorker& other);

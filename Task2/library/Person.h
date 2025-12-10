@@ -9,7 +9,7 @@ protected:
     
 public:
     Person() = default;
-    Person(const std::string& name, int age);
+    Person(const std::string& name,const int age);
     virtual ~Person() = default;
     
     virtual void printInfo() const;

@@ -9,7 +9,7 @@ private:
     
 public:
     Patient();
-    Patient(const std::string& name, int age, int roomNumber);
+    Patient(const std::string& name,const int age,const int roomNumber);
     
     void printInfo() const override;
     void readFromInput() override;

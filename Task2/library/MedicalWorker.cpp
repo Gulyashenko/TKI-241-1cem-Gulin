@@ -7,7 +7,7 @@ MedicalWorker::MedicalWorker()
     patients = std::make_unique<Patient[]>(patientCapacity);
 }
 
-MedicalWorker::MedicalWorker(const std::string& name, int age, const std::string& specialization) 
+MedicalWorker::MedicalWorker(const std::string& name, const int age, const std::string& specialization) 
     : Person(name, age), specialization(specialization), patientCount(0), patientCapacity(2) {
     patients = std::make_unique<Patient[]>(patientCapacity);
 }
@@ -64,7 +64,7 @@ void MedicalWorker::resizePatients() {
     if (patientCount >= patientCapacity) {
         patientCapacity *= 2;
         auto newPatients = std::make_unique<Patient[]>(patientCapacity);
-        for (int i = 0; i < patientCount; i++) {
+        for (size_t i = 0; i < patientCount; i++) {
             newPatients[i] = std::move(patients[i]);
         }
         patients = std::move(newPatients);
@@ -77,7 +77,7 @@ void MedicalWorker::printInfo() const {
     std::cout << ", Specialization: " << specialization 
               << ", Patients: " << patientCount << "\n";
     
-    for (int i = 0; i < patientCount; i++) {
+    for (size_t i = 0; i < patientCount; i++) {
         std::cout << "  " << (i + 1) << ". " << patients[i] << "\n";
     }
 }
@@ -115,7 +115,7 @@ void MedicalWorker::removePatient(int index) {
 }
 
 bool MedicalWorker::hasPatient(const std::string& patientName) const {
-    for (int i = 0; i < patientCount; i++) {
+    for (size_t i = 0; i < patientCount; i++) {
         if (patients[i].getName() == patientName) {
             return true;
         }
