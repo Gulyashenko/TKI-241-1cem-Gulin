@@ -1,12 +1,15 @@
 #include "MedicalWorker.h"
 #include <iostream>
 #include <memory>
+#include <vector>
 
 class Hospital {
 private:
     std::unique_ptr<MedicalWorker[]> workers;  // Массив медицинских работников
     int workerCount;
     int workerCapacity;
+    int pacientCapacity;
+    std::vector<Patient> patients;
     
     void resizeWorkers();
     

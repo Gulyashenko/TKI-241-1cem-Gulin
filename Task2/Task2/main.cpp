@@ -16,7 +16,7 @@ int main(){
     std::cin>>hospital;
     
     ctd::cout<<"Enter command:\n" << ShowWorker << " - show worker\n" << ShowPatient << " - show patient\n" << ShowHospital << " - show hospital\n";
-    int command;
+    int command = 0;
     std::cin>>command;
     switch (command){
       case ShowWorkers:
@@ -38,12 +38,13 @@ int main(){
       case ShowRoomOfPatient:
       hospital.printPacientsByRoom();
       break;
+      default: throw;
     }
     return 0;
   }
 
 int input(const char* message){
-  int result;
+  int result = 0;
   if (message != nullptr){ std::cout<<message; }
   std::cin>>result;
   if (std::cin.fail()){std::cout<<"Invalid input\n"; throw;}

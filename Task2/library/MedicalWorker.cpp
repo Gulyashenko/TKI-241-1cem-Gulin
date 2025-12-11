@@ -16,7 +16,7 @@ MedicalWorker::MedicalWorker(const MedicalWorker& other)
     : Person(other), specialization(other.specialization), 
       patientCount(other.patientCount), patientCapacity(other.patientCapacity) {
     patients = std::make_unique<Patient[]>(patientCapacity);
-    for (int i = 0; i < patientCount; i++) {
+    for (size_t i = 0; i < patientCount; i++) {
         patients[i] = other.patients[i];
     }
 }
@@ -29,7 +29,7 @@ MedicalWorker& MedicalWorker::operator=(const MedicalWorker& other) {
         patientCapacity = other.patientCapacity;
         
         patients = std::make_unique<Patient[]>(patientCapacity);
-        for (int i = 0; i < patientCount; i++) {
+        for (size_t i = 0; i < patientCount; i++) {
             patients[i] = other.patients[i];
         }
     }
@@ -107,7 +107,7 @@ void MedicalWorker::addPatient(const Patient& patient) {
 
 void MedicalWorker::removePatient(int index) {
     if (index >= 0 && index < patientCount) {
-        for (int i = index; i < patientCount - 1; i++) {
+        for (size_t i = index; i < patientCount - 1; i++) {
             patients[i] = std::move(patients[i + 1]);
         }
         patientCount--;
