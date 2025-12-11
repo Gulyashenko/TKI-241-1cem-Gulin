@@ -25,7 +25,7 @@ int main(){
       case ShowWorkersOnPatient:
       string patientName;
       std::cin>>patientName;
-      hospital.printWorkerByPatientName();
+      hospital.printWorkerByPatientName(patientName);
       break;
       case ShowPasients:
       hospital.printAllPatients();
@@ -33,7 +33,7 @@ int main(){
       case ShowPacientsOfWorker:
       string workerName;
       std::cin>>workerName;
-      hospital.printPatientsOfWorker();
+      hospital.printPatientsOfWorker(workerName);
       break;
       case ShowRoomOfPatient:
       hospital.printPacientsByRoom();

@@ -67,6 +67,14 @@ const MedicalWorker* Hospital::getWorkers() const {
     return workers.get();
 }
 
+int Hospital::getPacientCount() const {
+    return pacientCount;
+}
+
+const Pacient* Hospital::getPacients() const {
+    return pacients.get();
+}
+
 void Hospital::addWorker(const MedicalWorker& worker) {
     resizeWorkers();
     workers[workerCount++] = worker;
@@ -78,6 +86,20 @@ void Hospital::removeWorker(int index) {
             workers[i] = std::move(workers[i + 1]);
         }
         workerCount--;
+    }
+}
+
+void Hospital::addPatient(const Patient& patient) {
+    resizePacients();
+    pacients[pacientCount++] = patient;
+}
+
+void Hospital::removePatient(int index) {
+    if (index >= 0 && index < pacientCount) {
+        for (size_t i = index; i < pacientCount - 1; i++) {
+            pacients[i] = std::move(pacients[i + 1]);
+        }
+        pacientCount--;
     }
 }
 

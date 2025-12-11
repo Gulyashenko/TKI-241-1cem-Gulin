@@ -24,9 +24,15 @@ public:
     
     int getWorkerCount() const;
     const MedicalWorker* getWorkers() const;
+
+    int getPacientCount() const;
+    const Pacient* getPacients() const;
     
     void addWorker(const MedicalWorker& worker);
     void removeWorker(int index);
+
+    void addPacient(const Patient& patient);
+    void removePacient(int index);
     
     MedicalWorker* findWorkerByName(const std::string& name) const;
     MedicalWorker* findWorkerByPatientName(const std::string& patientName) const;
