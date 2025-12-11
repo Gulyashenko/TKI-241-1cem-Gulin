@@ -15,7 +15,10 @@ int main(){
     Hospital hospital;
     std::cin>>hospital;
     
-    ctd::cout<<"Enter command:\n" << ShowWorker << " - show worker\n" << ShowPatient << " - show patient\n" << ShowHospital << " - show hospital\n";
+    ctd::cout<<"Enter command:\n" << ShowWorkers << " - show workers\n" << ShowWorkersOnPatient
+      << " - show workers on patient\n" << ShowPasients << " - show patients\n" << ShowPacientsOfWorker
+      << " - show patients of worker\n" << ShowRoomOfPatient << " - show patients by room\n" << ShowPatient
+      << " - show patient\n" << ShowHospital << " - show hospital\n";
     int command = 0;
     std::cin>>command;
     switch (command){
