@@ -59,6 +59,17 @@ void Hospital::resizeWorkers() {
     }
 }
 
+void Hospital::resizePacients() {
+    if (pacientCount >= pacientCapacity) {
+        pacientCapacity *= 2;
+        auto newPacients = std::make_unique<Patient[]>(pacientCapacity);
+        for (size_t i = 0; i < pacientCount; i++) {
+            newPacients[i] = std::move(pacients[i]);
+        }
+        pacients = std::move(newPacients);
+    }
+}
+
 int Hospital::getWorkerCount() const {
     return workerCount;
 }

@@ -12,7 +12,8 @@ private:
     std::vector<Patient> patients;
     
     void resizeWorkers();
-    
+    void resizePacient();
+
 public:
     Hospital();
     ~Hospital() = default;
