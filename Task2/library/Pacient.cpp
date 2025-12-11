@@ -6,7 +6,9 @@ int Patient::nextId = 1000;
 Patient::Patient() : Person(), patientId(nextId++), roomNumber(0) {}
 
 Patient::Patient(const std::string& name, const int age,const int roomNumber, const MedicalWorker* assignedWorker) 
-    : Person(name, age), patientId(nextId++), roomNumber(roomNumber), assignedWorker(assignedWorker) {}
+    : Person(name, age), patientId(nextId++), roomNumber(roomNumber), assignedWorker(assignedWorker) {
+      assignedWorker->addPatient(*this);
+    }
 
 void Patient::printInfo() const {
     std::cout << "Patient [ID: " << patientId << " << Room: " << roomNumber << "] ";

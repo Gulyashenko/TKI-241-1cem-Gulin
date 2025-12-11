@@ -10,6 +10,7 @@ MedicalWorker::MedicalWorker()
 MedicalWorker::MedicalWorker(const std::string& name, const int age, const std::string& specialization) 
     : Person(name, age), specialization(specialization), patientCount(0), patientCapacity(2) {
     patients = std::make_unique<Patient[]>(patientCapacity);
+
 }
 
 MedicalWorker::MedicalWorker(const MedicalWorker& other) 

@@ -1,6 +1,7 @@
 #include "Hospital.h"
 #include <iostream>
 #include <utility>
+#include <random>
 
 Hospital::Hospital() : workerCount(0), workerCapacity(2) {
     workers = std::make_unique<MedicalWorker[]>(workerCapacity);
@@ -213,21 +214,26 @@ std::istream& operator>>(std::istream& is, Hospital& hospital) {
     for (size_t i = 0; i < numWorkers; i++) {
         std::cout << "\nMedical Worker #" << (i + 1) << ":\n";
         MedicalWorker worker;
-        is >> worker;
-        
-        int numPatients;
-        std::cout << "Enter number of patients for this worker: ";
-        is >> numPatients;
-        is.ignore();
-        
-        for (size_t j = 0; j < numPatients; j++) {
-            std::cout << "Patient #" << (j + 1) << ":\n";
-            Patient patient;
-            is >> patient;
-            worker.addPatient(patient);
-        }
+        is >> worker; 
         
         hospital.addWorker(worker);
+    }
+
+     int numPacient = 0;
+    std::cout << "Enter number of pacients: ";
+    is >> numPacient;
+    is.ignore();
+    
+    for (size_t i = 0; i < numPacient; i++) {
+        std::cout << "\n Pacient#" << (i + 1) << ":\n";
+        Pacient pacient;
+        is >> worker;
+                
+        hospital.addPacient(pacient);
+        std::unique_ptr<MedicalWorker[]> worker = hospital.getWorkers()[i];
+        int workerCount = hospital.getWorkerCount();
+        int workerIndex = rand() % workerCount;
+        pacient.setAssignedWorker(worker[workerIndex]);
     }
     return is;
 }
