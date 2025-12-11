@@ -234,6 +234,7 @@ std::istream& operator>>(std::istream& is, Hospital& hospital) {
         int workerCount = hospital.getWorkerCount();
         int workerIndex = rand() % workerCount;
         pacient.setAssignedWorker(worker[workerIndex]);
+        worker[workerIndex].addPatient(pacient);
     }
     return is;
 }
