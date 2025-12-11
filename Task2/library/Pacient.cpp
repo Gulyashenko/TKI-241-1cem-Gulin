@@ -5,8 +5,8 @@ int Patient::nextId = 1000;
 
 Patient::Patient() : Person(), patientId(nextId++), roomNumber(0) {}
 
-Patient::Patient(const std::string& name, const int age,const int roomNumber) 
-    : Person(name, age), patientId(nextId++), roomNumber(roomNumber) {}
+Patient::Patient(const std::string& name, const int age,const int roomNumber, const MedicalWorker* assignedWorker) 
+    : Person(name, age), patientId(nextId++), roomNumber(roomNumber), assignedWorker(assignedWorker) {}
 
 void Patient::printInfo() const {
     std::cout << "Patient [ID: " << patientId << " << Room: " << roomNumber << "] ";
@@ -26,6 +26,10 @@ int Patient::getId() const {
 
 int Patient::getRoomNumber() const {
     return roomNumber;
+}
+
+MedicalWorker* Patient::getAssignedWorker() const {
+    return assignedWorker;
 }
 
 std::ostream& operator<<(std::ostream& os, const Patient& patient) {
